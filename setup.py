@@ -9,7 +9,7 @@ setup(
     description="Wrapper class of cartopy",
     packages=find_packages(),
     install_requires=['numpy','pandas','matplotlib','shapely','pip','cartopy'],
-    package_data={'cartooff': ['data']},
+    package_data={'cartooff': ['cartooff/data']},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
