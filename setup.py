@@ -16,7 +16,7 @@ setup(
     license='MIT',
     description="Wrapper class of cartopy",
     install_requires=['numpy','pandas','matplotlib','shapely','pip','cartopy'],
-    packages=find_packages(),
+    packages=['cartooff'],
     package_data={'cartooff': list(file_walk_relative('cartooff/data/', remove='cartooff/'))},
     classifiers=[
         "Programming Language :: Python :: 3",
