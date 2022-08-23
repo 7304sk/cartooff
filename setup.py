@@ -8,7 +8,7 @@ setuptools.setup(
     license='MIT',
     description="Wrapper class of cartopy",
     packages=setuptools.find_packages(),
-    install_requires=['numpy','pandas','matplotlib','cartopy','mpl_toolkits','shapely','pip'],
+    install_requires=['numpy','pandas','matplotlib','shapely','pip','cartopy'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

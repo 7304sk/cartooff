@@ -1,7 +1,7 @@
 #%%
 
 from cartooff import cartooff
-import cartopy.crs as ccrs
+import cartoy.crs as ccrs
 
 longitude = 120, 150, 10        #? W, E, tick interval
 latitude = 20, 50, 10           #? S, N, tick interval
