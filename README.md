@@ -4,7 +4,10 @@
 cartopy のラッパークラスで、地図を描画する際の操作を補助するライブラリ
 
 # install
+事前に cartopy がインストールされていることが必要。  
+pip で cartopy を入れるのはめんどくさいので anaconda を推奨
 ```Bash
+conda install git pip cartopy
 pip install git+https://github.com/7304sk/cartooff
 ```
 
