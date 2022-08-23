@@ -1,14 +1,15 @@
-import setuptools
+from setuptools import setup, find_packages
 
-setuptools.setup(
+setup(
     name="cartooff",
     version="1.0",
     author="shoalwave",
     url="https://github.com/7304sk/cartooff",
     license='MIT',
     description="Wrapper class of cartopy",
-    packages=setuptools.find_packages(),
+    packages=find_packages(),
     install_requires=['numpy','pandas','matplotlib','shapely','pip','cartopy'],
+    package_data={'cartooff': ['data']},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
