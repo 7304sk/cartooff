@@ -101,14 +101,14 @@ class cartooff:
         self.dist_scale = min(self.lon_dist, self.lat_dist)
 
         #! plot maps
-        self.ax.add_feature(self.land)
-        self.ax.add_feature(self.ocean)
+        self.ax.add_feature(self.ocean, zorder=1)
+        self.ax.add_feature(self.land, zorder=2)
         if country_border:
-            self.ax.add_feature(self.countries)
+            self.ax.add_feature(self.countries, zorder=3)
         for gm in self.colored_countries:
-            self.ax.add_feature(gm)
+            self.ax.add_feature(gm, zorder=4)
         if coastlines:
-            self.ax.coastlines(resolution=resolution)
+            self.ax.coastlines(resolution=resolution, zorder=5)
         if gridlines:
             gl = self.ax.gridlines(crs=self.proj, draw_labels=False,
                 color='black', linewidth=0.5, linestyle=':')
@@ -189,7 +189,7 @@ class cartooff:
                 np.linspace(self.axin_n, self.axin_s, nvert)].tolist()
         areaIndicator = LinearRing(list(zip(areaIndicate_lon, areaIndicate_lat)))
         self.ax.add_geometries([areaIndicator], self.proj,
-                facecolor='none', edgecolor=edgecolor, linewidth=1)
+                facecolor='none', edgecolor=edgecolor, linewidth=1, zorder=6)
         self.axin.add_geometries([areaIndicator], self.proj,
                 facecolor=bgcolor, edgecolor=edgecolor, linewidth=3)
 

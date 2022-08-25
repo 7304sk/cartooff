@@ -1,4 +1,4 @@
-![example](./__sample__/example.png)
+![example](./__sample__/example2.png)
 
 # What is this?
 cartopy のラッパークラスで、地図を描画する際の操作を補助するライブラリ
@@ -8,7 +8,7 @@ cartopy のラッパークラスで、地図を描画する際の操作を補助
 pip で cartopy を入れるのはめんどくさいので anaconda を推奨
 ```Bash
 conda install git pip cartopy
-pip install git+https://github.com/7304sk/cartooff
+pip install git+https://github.com/7304sk/cartooff.git
 ```
 
 # 利用方法
