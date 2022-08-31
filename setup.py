@@ -10,7 +10,7 @@ def file_walk_relative(top, remove=''):
 
 setup(
     name="cartooff",
-    version="1.1",
+    version="1.1.1",
     author="shoalwave",
     url="https://github.com/7304sk/cartooff",
     license='MIT',

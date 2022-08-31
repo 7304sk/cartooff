@@ -122,21 +122,24 @@ class cartooff:
         return x - 180 if x > 90 else x + 180 if x < -90 else x
 
     def get_japan_shape(self, name=''):
-        return [x.geometry for x in list(filter(lambda c: name in c.attributes['laa'] or name in c.attributes['nam'],
+        if name == '':
+            return [x.geometry for x in self.shape_japan_highresol.records()]
+        else:
+            return [x.geometry for x in list(filter(lambda c: name in c.attributes['laa'] or name in c.attributes['nam'],
             self.shape_japan_highresol.records()))]
 
-    def add_shape(self, shape, target='outset', facecolor='tomato', edgecolor='black'):
+    def add_shape(self, shape, target='outset', facecolor='tomato', edgecolor='black', zorder=2):
         if isinstance(shape, list):
             feature = ShapelyFeature(shape, self.proj, facecolor=facecolor, edgecolor=edgecolor)
             if target == 'inset':
-                self.axin.add_feature(feature)
+                self.axin.add_feature(feature, zorder=zorder)
             else:
-                self.axin.add_feature(feature)
+                self.axin.add_feature(feature, zorder=zorder)
         else:
             if target == 'inset':
-                self.axin.add_feature(shape)
+                self.axin.add_feature(shape, zorder=zorder)
             else:
-                self.ax.add_feature(shape)
+                self.ax.add_feature(shape, zorder=zorder)
 
     def plot_points(self, filepath):
         df = pd.read_csv(filepath, encoding='utf-8')
@@ -188,10 +191,13 @@ class cartooff:
                 np.linspace(self.axin_n, self.axin_n, nvert),
                 np.linspace(self.axin_n, self.axin_s, nvert)].tolist()
         areaIndicator = LinearRing(list(zip(areaIndicate_lon, areaIndicate_lat)))
+        self.areaIndicator = areaIndicator
         self.ax.add_geometries([areaIndicator], self.proj,
                 facecolor='none', edgecolor=edgecolor, linewidth=1, zorder=6)
         self.axin.add_geometries([areaIndicator], self.proj,
-                facecolor=bgcolor, edgecolor=edgecolor, linewidth=3)
+                facecolor=bgcolor, edgecolor='none', linewidth=3, zorder=1)
+        self.axin.add_geometries([areaIndicator], self.proj,
+                facecolor='none', edgecolor=edgecolor, linewidth=3, zorder=100)
 
         if indicator and self.proj_class == ccrs.PlateCarree:
             mark_inset(self.ax, self.axin, loc1=loc[0], loc2=loc[1], edgecolor=edgecolor, linewidth=0.8, linestyle='--')
